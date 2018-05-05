@@ -34,8 +34,18 @@ public:
     }
 
     bool find(int value, Node<T> **&next, string Svalue = "", string symbol = "") {
-        for (next = &(Head->next); (*next) != Head; next = &(*next)->next);
-        return (*next)->value == value and (*next)->Svalue == Svalue;
+/*        for (next = &(Head->next);
+             (*next)->value != value and (*next)->Svalue != Svalue and (*next)->symbol != symbol and
+             (*next) != Head; next = &(*next)->next);
+        return (*next)->value == value and (*next)->Svalue == Svalue and (*next)->symbol == symbol;*/
+        next=&(Head->next);
+        while(*next!=Head)
+        {
+            if((*next)->value == value and (*next)->Svalue == Svalue and (*next)->symbol == symbol)
+                return true;
+            next = &(*next)->next;
+        }
+        return 0;
     }
 
     void remove(int value, string Svalue = "", string symbol = "") {
@@ -64,26 +74,26 @@ public:
     }
 
     void insert(int value, string Svalue = "", string symbol = "") {
-        if (Head == 0) {
-            Head = new Node<T>(value, Svalue, symbol);
-            Head->next = Head;
-            return;
-        }
-        if (Head->value == value)
-            return;
-        if (Head->value > value) {
-            Node<T> *ultimo = Head;
-            while (ultimo->next != Head)
-                ultimo = ultimo->next;
+         if (Head == 0) {
+             Head = new Node<T>(value, Svalue, symbol);
+             Head->next = Head;
+             return;
+         }
+         if (Head->value == value)
+             return;
+         if (Head->value > value) {
+             Node<T> *ultimo = Head;
+             while (ultimo->next != Head)
+                 ultimo = ultimo->next;
 
-            Head = new Node<T>(value, Svalue, symbol, Head);
-            ultimo->next = Head;
-            return;
-        }
-        Node<T> **next;
-        if (!find(value, next, symbol)) {
-            *next = new Node<T>(value, Svalue, symbol, *next);
-        }
+             Head = new Node<T>(value, Svalue, symbol, Head);
+             ultimo->next = Head;
+             return;
+         }
+         Node<T> **next;
+         if (!find(value, next, symbol)) {
+             *next = new Node<T>(value, Svalue, symbol, *next);
+         }
     }
 
     void sort() {
@@ -117,7 +127,7 @@ public:
             Node<T> *temp = Head;
             do {
                 cout << "value: " << temp->value;
-                if (temp->symbol != "") {
+                if (temp->Svalue!="" and temp->symbol != "") {
                     cout << " Svalue: " << temp->Svalue
                          << " Symbol: " << temp->symbol << endl;
 
@@ -160,15 +170,14 @@ int main() {
     List<int> *Baraja = new List<int>;
     for (int i = 0; i < 52; i++) {
         int x = i % 13 + 1;
-        cout<<"i: "<<i<<" x: "<<x<<endl;
-
         string Svalue = (x == 1) ? "A" : (x == 11) ? "J" : (x == 12) ? "Q" : (x == 13) ? "K" : to_string(x); //El numero de la carta
 
-        string symbol = (i <= 13) ? "Espadas" : (i > 13 and i <= 26) ? "Corazones" : (i > 26 and i <= 39) ? "Rombo"
+        string symbol = (i < 13) ? "Espadas" : (i < 26) ? "Corazones" : (i < 39) ? "Rombo"
                                                                                                           : "Trebol"; //El simbolo de la carta
-
+        cout<<"valores a ingresar: "<<x<<" "<<Svalue<<" "<<symbol<<endl;
         Baraja->insert(x, Svalue, symbol);
     }
+
     Baraja->print();
     Baraja->sort();
     cout << "\n\nLista barajeada\n";
