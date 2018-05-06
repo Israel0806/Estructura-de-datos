@@ -190,17 +190,17 @@ int main() {
  *            en el cual cada nodo es otra lista circular(
  *            cartas de cada jugador).
 */
-    List<List<int>>*test1 = new List<List<int>>();
+    List<List<int>>*Jugadores = new List<List<int>>();
 
     List<int> Jugador1;
     List<int> Jugador2;
     List<int> Jugador3;
     List<int> Jugador4;
 
-    test1->insert(Jugador1);
-    test1->insert(Jugador2);
-    test1->insert(Jugador3);
-    test1->insert(Jugador4);
+    Jugadores->insert(Jugador1);
+    Jugadores->insert(Jugador2);
+    Jugadores->insert(Jugador3);
+    Jugadores->insert(Jugador4);
 
    //for (int i = 0; i < numJugadores; i++) {}
 
