@@ -1,7 +1,8 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/8_Locos.dir/main.cpp.o"
+  "CMakeFiles/8_Locos.dir/main.cpp.obj"
   "8_Locos.pdb"
   "8_Locos.exe"
+  "8_Locos.exe.manifest"
   "lib8_Locos.dll.a"
 )
 
