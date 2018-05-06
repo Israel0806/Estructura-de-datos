@@ -26,18 +26,29 @@
       <file leaf-file-name="main.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-39">
-              <caret line="235" column="5" lean-forward="true" selection-start-line="235" selection-start-column="5" selection-end-line="235" selection-end-column="5" />
+            <state relative-caret-position="133">
+              <caret line="87" selection-start-line="87" selection-end-line="87" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
                 <element signature="e#71#83#0" expanded="true" />
-                <element signature="e#522#534#0" expanded="true" />
+                <element signature="e#528#540#0" expanded="true" />
+                <element signature="e#575#587#0" expanded="true" />
+                <element signature="e#3111#3970#0" />
+                <element signature="e#4840#5226#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>0</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>nullptr</replace>
+    </replaceStrings>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -52,11 +63,11 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds">
     <option name="x" value="-5" />
     <option name="y" value="-15" />
-    <option name="width" value="1945" />
-    <option name="height" value="1105" />
+    <option name="width" value="1943" />
+    <option name="height" value="1103" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -103,28 +114,28 @@
       <option name="presentableId" value="Default" />
       <updated>1525616981932</updated>
       <workItem from="1525616983934" duration="438000" />
-      <workItem from="1525622586667" duration="5554000" />
+      <workItem from="1525622586667" duration="9821000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5992000" />
+    <option name="totallyTimeSpent" value="10259000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-4" y="-12" width="1554" height="882" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info active="true" anchor="bottom" id="Messages" order="7" visible="true" weight="0.32905984" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.32841823" />
       <window_info anchor="bottom" id="CMake" order="7" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32905984" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.26541555" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.3994638" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -140,6 +151,11 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="3" />
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
@@ -148,7 +164,10 @@
           <folding>
             <element signature="e#0#19#0" expanded="true" />
             <element signature="e#71#83#0" expanded="true" />
-            <element signature="e#522#534#0" expanded="true" />
+            <element signature="e#528#540#0" expanded="true" />
+            <element signature="e#575#587#0" expanded="true" />
+            <element signature="e#3111#3970#0" />
+            <element signature="e#4840#5226#0" />
           </folding>
         </state>
       </provider>
@@ -176,12 +195,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-39">
-          <caret line="235" column="5" lean-forward="true" selection-start-line="235" selection-start-column="5" selection-end-line="235" selection-end-column="5" />
+        <state relative-caret-position="133">
+          <caret line="87" selection-start-line="87" selection-end-line="87" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
             <element signature="e#71#83#0" expanded="true" />
-            <element signature="e#522#534#0" expanded="true" />
+            <element signature="e#528#540#0" expanded="true" />
+            <element signature="e#575#587#0" expanded="true" />
+            <element signature="e#3111#3970#0" />
+            <element signature="e#4840#5226#0" />
           </folding>
         </state>
       </provider>

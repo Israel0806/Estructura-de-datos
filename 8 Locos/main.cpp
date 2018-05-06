@@ -13,7 +13,7 @@ public:
     string symbol; // 1 de los 4 simbolos
     Node<T> *next;
 
-    Node(T value, string Svalue = "", string symbol = "", Node<T> *next = NULL) {
+    Node(T value, string Svalue = "", string symbol = "", Node<T> *next = nullptr) {
         index = index;
         this->value = value;
         this->Svalue = Svalue;
@@ -22,7 +22,7 @@ public:
     }
 
     ~Node() {
-        next = NULL;
+        next = nullptr;
     }
 };
 template <typename T>
@@ -30,10 +30,10 @@ int Node<T>::index = 1;
 
 template <typename T>
 class List {
-    Node<T> *Head;
+    Node<T> *Head = nullptr;
 public:
     List() {
-        Head = NULL;
+        Head = nullptr;
     }
 
     bool find(T value, Node<T> **&next, string Svalue = "", string symbol = "") {
@@ -51,12 +51,12 @@ public:
     }
 
     void remove(T value, string Svalue = "", string symbol = "") {
-        if (Head != 0) {
+        if (Head != nullptr) {
             Node<T> **next;
             if (Head->value == value and Head->Svalue == Svalue and Head->symbol == symbol) {
                 if (Head->next == Head) {
                     delete Head;
-                    Head = NULL;
+                    Head = nullptr;
                     return;
                 }
                 Node<T> *ultimo = Head;
@@ -77,9 +77,10 @@ public:
 
     void insert(T value, string Svalue = "", string symbol = "") {
 
-        if (Head == 0) {
+        if (Head == nullptr) {
             Head = new Node<T>(value, Svalue, symbol);
             Head->next = Head;
+            cout<<"se entro aqui en jugador "<<Head->index<<endl;
             return;
         }
 
@@ -131,7 +132,7 @@ public:
     }
 
     void print() {
-        if (Head != 0) {
+        if (Head != nullptr) {
             cout << endl << "Elementos dentro de la lista" << endl << endl;
             Node<T> *temp = Head;
             do {
@@ -168,12 +169,12 @@ public:
     }
 
     ~List() {
-        if (Head != 0) {
+        if (Head != nullptr) {
             Node<T> *temp = Head;
             Node<T> *next;
             Node<T> *ultimo = Head;
             for (; ultimo->next != Head; ultimo = ultimo->next);
-            ultimo->next = NULL;
+            ultimo->next = nullptr;
             do {
                 next = temp->next;
                 delete temp;
@@ -204,8 +205,8 @@ int main() {
 
 //    Baraja->print();
     Baraja->sort();
-//    cout << "\n\nLista barajeada\n";
-//    Baraja->print();
+    cout << "\n\nLista barajeada\n";
+    Baraja->print();
 
 //    List<int> *Jugadores= new List<int>[numJugadores];
 
@@ -247,10 +248,15 @@ int main() {
     // Paso 1
     for (int j = 0; j < n; j++) {
         for (int i = 0; i < numJugadores; i++) {
+            cout << "\nValores a ingresar: " << Baraja->getValue() << " " << Baraja->getSvalue() << " "
+                 << Baraja->getSymbol()<<endl;
             Jugadores[i].insert(Baraja->getValue(), Baraja->getSvalue(), Baraja->getSymbol());
             Baraja->remove(Baraja->getValue(), Baraja->getSvalue(), Baraja->getSymbol());
         }
     }
+    cout<<"\nBaraja ya repartida\n";
+    Baraja->print();
+
 
     //Paso 3
 
