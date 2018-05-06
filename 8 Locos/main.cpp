@@ -5,25 +5,28 @@ using namespace std;
 
 
 template <typename T>
-class Node
-{
+class Node {
 public:
+    static int index;
     T value;
     string Svalue; // numero o letra
     string symbol; // 1 de los 4 simbolos
-    Node<T>* next;
-    Node(T value, string Svalue="", string symbol="", Node<T>* next=NULL)
-    {
-        this->value=value;
-        this->Svalue=Svalue;
-        this->symbol=symbol;
-        this->next=next;
+    Node<T> *next;
+
+    Node(T value, string Svalue = "", string symbol = "", Node<T> *next = NULL) {
+        index = index;
+        this->value = value;
+        this->Svalue = Svalue;
+        this->symbol = symbol;
+        this->next = next;
     }
-    ~Node()
-    {
-        next=NULL;
+
+    ~Node() {
+        next = NULL;
     }
 };
+template <typename T>
+int Node<T>::index = 1;
 
 template <typename T>
 class List {
@@ -144,6 +147,26 @@ public:
         }
     }
 
+/*    void move() {
+        Head = Head->next;
+    }*/
+
+    T getValue() {
+        return Head->value;
+    }
+
+    string getSvalue() {
+        return Head->Svalue;
+    }
+
+    string getSymbol() {
+        return Head->symbol;
+    }
+
+    T getindex() {
+        return Head->index;
+    }
+
     ~List() {
         if (Head != 0) {
             Node<T> *temp = Head;
@@ -175,14 +198,14 @@ int main() {
 
         string symbol = (i < 13) ? "Espadas" : (i < 26) ? "Corazones" : (i < 39) ? "Rombo"
                                                                                  : "Trebol"; //El simbolo de la carta
-        cout<<"valores a ingresar: "<<x<<" "<<Svalue<<" "<<symbol<<endl;
+        //cout<<"valores a ingresar: "<<x<<" "<<Svalue<<" "<<symbol<<endl;
         Baraja->insert(x, Svalue, symbol);
     }
 
-    Baraja->print();
+//    Baraja->print();
     Baraja->sort();
-    cout << "\n\nLista barajeada\n";
-    Baraja->print();
+//    cout << "\n\nLista barajeada\n";
+//    Baraja->print();
 
 //    List<int> *Jugadores= new List<int>[numJugadores];
 
@@ -190,19 +213,46 @@ int main() {
  *            en el cual cada nodo es otra lista circular(
  *            cartas de cada jugador).
 */
-    List<List<int>>*Jugadores = new List<List<int>>();
+    /*List<List<int>>*Jugadores = new List<List<int>>();
 
     List<int> Jugador1;
     List<int> Jugador2;
     List<int> Jugador3;
     List<int> Jugador4;
+    Jugador1.insert(1);
+    Jugador2.insert(2);
+    Jugador3.insert(3);
+    Jugador4.insert(4);
 
     Jugadores->insert(Jugador1);
     Jugadores->insert(Jugador2);
     Jugadores->insert(Jugador3);
     Jugadores->insert(Jugador4);
+    Jugador1.print();
+    cout<<&Jugador1<<" "<<&Jugador2<<" "<<&Jugador3<<" "<<&Jugador4<<endl;
+    cout<<&Jugadores<<endl<<endl;
+    for(int i=rand()%3+1;i>0;i++) {
+        Jugadores->move();
+    }
+    cout<<&Jugadores;*/
 
-   //for (int i = 0; i < numJugadores; i++) {}
+    List<int> *Jugadores = new List<int>[numJugadores];
+    cout<<endl;
+    int i=rand()%3+1;
+    List<int> Jtemp = Jugadores[0];
+    Jugadores[0] = Jugadores[i];
+    Jugadores[i] = Jtemp;
+    int n = (numJugadores==2) ? 7 : 8;
+
+    // Paso 1
+    for (int j = 0; j < n; j++) {
+        for (int i = 0; i < numJugadores; i++) {
+            Jugadores[i].insert(Baraja->getValue(), Baraja->getSvalue(), Baraja->getSymbol());
+            Baraja->remove(Baraja->getValue(), Baraja->getSvalue(), Baraja->getSymbol());
+        }
+    }
+
+    //Paso 3
 
 
     //delete Jugador1, Jugador2, Jugador3, Jugador4, Baraja;
