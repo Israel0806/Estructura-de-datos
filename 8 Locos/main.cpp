@@ -8,11 +8,11 @@ template <typename T>
 class Node
 {
 public:
-    int value;
+    T value;
     string Svalue; // numero o letra
     string symbol; // 1 de los 4 simbolos
     Node<T>* next;
-    Node(int value, string Svalue="", string symbol="", Node<T>* next=NULL)
+    Node(T value, string Svalue="", string symbol="", Node<T>* next=NULL)
     {
         this->value=value;
         this->Svalue=Svalue;
@@ -33,7 +33,7 @@ public:
         Head = NULL;
     }
 
-    bool find(int value, Node<T> **&next, string Svalue = "", string symbol = "") {
+    bool find(T value, Node<T> **&next, string Svalue = "", string symbol = "") {
 /*        for (next = &(Head->next);
              (*next)->value != value and (*next)->Svalue != Svalue and (*next)->symbol != symbol and
              (*next) != Head; next = &(*next)->next);
@@ -47,7 +47,7 @@ public:
         return false;
     }
 
-    void remove(int value, string Svalue = "", string symbol = "") {
+    void remove(T value, string Svalue = "", string symbol = "") {
         if (Head != 0) {
             Node<T> **next;
             if (Head->value == value and Head->Svalue == Svalue and Head->symbol == symbol) {
@@ -72,7 +72,8 @@ public:
         }
     }
 
-    void insert(int value, string Svalue = "", string symbol = "") {
+    void insert(T value, string Svalue = "", string symbol = "") {
+
         if (Head == 0) {
             Head = new Node<T>(value, Svalue, symbol);
             Head->next = Head;
@@ -91,7 +92,6 @@ public:
             Node<T> *ultimo = Head;
             while (ultimo->next != Head)
                 ultimo = ultimo->next;
-
             Head = new Node<T>(value, Svalue, symbol, Head);
             ultimo->next = Head;
             return;
@@ -190,15 +190,21 @@ int main() {
  *            en el cual cada nodo es otra lista circular(
  *            cartas de cada jugador).
 */
-    List<int> *Jugador1 = new List<int>;
-    List<int> *Jugador2 = new List<int>;
-    List<int> *Jugador3 = new List<int>;
-    List<int> *Jugador4 = new List<int>;
+    List<List<int>>*test1 = new List<List<int>>();
 
-    for (int i = 0; i < numJugadores; i++) {
-    }
+    List<int> Jugador1;
+    List<int> Jugador2;
+    List<int> Jugador3;
+    List<int> Jugador4;
+
+    test1->insert(Jugador1);
+    test1->insert(Jugador2);
+    test1->insert(Jugador3);
+    test1->insert(Jugador4);
+
+   //for (int i = 0; i < numJugadores; i++) {}
 
 
-    delete Jugador1, Jugador2, Jugador3, Jugador4, Baraja;
+    //delete Jugador1, Jugador2, Jugador3, Jugador4, Baraja;
     return 0;
 }
