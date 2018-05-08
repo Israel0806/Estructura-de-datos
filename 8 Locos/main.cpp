@@ -1,6 +1,9 @@
 #include <iostream>
 #include <time.h>
-
+#include <stdlib.h>
+#include <string>
+#include <algorithm>
+#include <sstream>
 using namespace std;
 
 template <typename T>
@@ -25,7 +28,7 @@ public:
 
 template <typename T>
 class List {
-    Node<T> *Head = nullptr;
+    Node<T> *Head;
 public:
 
     List() {
@@ -89,7 +92,7 @@ public:
     }
 
     void sort() {
-        srand(time(0)); // permite generar numeros aleatorios
+        srand(time(NULL)); // permite generar numeros aleatorios
 
         Node<T> *nodo1 = Head;
         Node<T> *nodo2 = Head;
@@ -113,9 +116,44 @@ public:
         }
     }
 
+    /*bool comprobar(T Value, string Symbol, List<T> *&pilaDescarte) {
+
+        Node<T> **next = &Head;
+        // Declarar un nuevo palo cuando es 8
+        while (*next != Head and
+               ((*next)->value == Value or (*next)->symbol == Symbol or (*next)->value == 8)) {
+            if ((*next)->value == Value or (*next)->symbol == Symbol) {
+                pilaDescarte->insert((*next)->value, (*next)->Svalue, (*next)->symbol);
+                remove((*next)->value, (*next)->Svalue, (*next)->symbol);
+                return true;
+            }
+            if ((*next)->value == 8 and (*next)->next != Head) {
+                cout << "Se cambiara de palo por el 8 con simbolo " << (*next)->symbol << endl;
+                pilaDescarte->insert((*next)->value, (*next)->Svalue, (*next)->symbol);
+                remove((*next)->value, (*next)->Svalue, (*next)->symbol);
+                return true;
+            }
+        }
+        return false;
+    }*/
+
+    void cFind(int cartaSelec) {
+        Node<T> *next = Head;
+
+        for (; cartaSelec > 1; cartaSelec--) {
+            next = next->next;
+        }
+        remove(next->value, next->Svalue, next->symbol);
+    }
+
     void print() {
+<<<<<<< HEAD
+        if (Head != nullptr) {
+            //cout << endl << "Elementos dentro de la lista" << endl << endl;
+=======
         if (Head != 0) {
             cout << endl << "Elementos dentro de la lista" << endl << endl;
+>>>>>>> 8b1c481c0f0192dc963e16e9e21ffe009f9673db
             Node<T> *temp = Head;
             do {
                 cout << "value: " << temp->value;
@@ -141,6 +179,21 @@ public:
         return Head->symbol;
     }
 
+<<<<<<< HEAD
+   /* T getLastValue() {
+        Node<T> **next = &Head->next;
+        for (; *next != Head; next = &(*next)->next);
+        return (*next)->value;
+    }
+
+    string getLastSymbol() {
+        Node<T> **next = &Head->next;
+        for (; *next != Head; next = &(*next)->next);
+        return (*next)->symbol;
+    }*/
+
+=======
+>>>>>>> 8b1c481c0f0192dc963e16e9e21ffe009f9673db
     ~List() {
         if (Head != 0) {
             Node<T> *temp = Head;
@@ -157,8 +210,41 @@ public:
     }
 };
 
+void nums_al(int n, int a[])
+{
+    int sinrep[52];
+    for(int i=0; i<52; i++)
+    {
+        sinrep[i] = i;
+    }
+    random_shuffle(sinrep, sinrep+52);
+
+    for(int i=0; i<n; i++)
+    {
+        a[i] = sinrep[i];
+
+    }
+}
+void crear_baraja(int n, List<int> *&baraja) ///tam baraja
+{
+    srand(time(NULL));
+    int a[n];
+    nums_al(n, a);
+    for (int i = 0; i < n; i++) {
+        int x = i % 13 + 1;
+        string Svalue = (x == 1) ? "A" : (x == 11) ? "J" : (x == 12) ? "Q" : (x == 13) ? "K" : to_string(x); //El numero de la carta
+        string symbol = (a[i] < 13) ? "Espadas" : (a[i] < 26) ? "Corazones" : (a[i] < 39) ? "Rombo": "Trebol";
+        //cout<<"valores a ingresar: "<<x<<" "<<Svalue<<" "<<symbol<<endl;
+        baraja->insert(x, Svalue, symbol);
+    }
+    baraja->sort();
+}
+
+
 int main() {
+    int indiceJugador = 0;
     int numJugadores;
+
     cout << "Ingrese el numero de jugadores: ";
     cin >> numJugadores;
     while (numJugadores < 2 or numJugadores > 4) {
@@ -166,6 +252,57 @@ int main() {
         cin >> numJugadores;
     }
     List<int> *Baraja = new List<int>;
+<<<<<<< HEAD
+
+    crear_baraja(52, Baraja);
+    Baraja->print();
+    cout << "repartiendo cartas" << endl;
+
+/// CREANDO JUGADORES
+
+    List<int> *array_jug[numJugadores];
+    for (int i = 0; i < numJugadores; i++)
+        array_jug[i] = new List<int>();
+
+    ///end
+
+
+    int num_cartas;
+    if (numJugadores > 2)num_cartas = 8; else num_cartas = 7;
+
+
+    for (int j = 0; j < num_cartas; j++) {
+        for (int i = 0; i < numJugadores; i++) {
+            array_jug[i]->insert(Baraja->getValue(), Baraja->getSvalue(), Baraja->getSymbol());
+            Baraja->remove(Baraja->getValue(), Baraja->getSvalue(), Baraja->getSymbol());
+        }
+    }
+    // PASO 3
+
+    List<int> *pilaDescarte = new List<int>;
+    while (Baraja->getValue() == 8) {
+        Baraja->sort();
+    }
+    pilaDescarte->insert(Baraja->getValue(), Baraja->getSvalue(), Baraja->getSymbol());
+    Baraja->remove(Baraja->getValue(), Baraja->getSvalue(), Baraja->getSymbol());
+    indiceJugador--;
+    if (indiceJugador < 0) indiceJugador += 3;
+
+
+
+    // PASO 4
+    // Si sale un ocho, se usa como comodin y se pasa de turno
+
+    /*for (int i = 0; i < numJugadores; i++) {
+        cout << "jugador" << i << ": " << endl;
+        array_jug[i]->print();
+    }*/
+    array_jug[3]->print();
+
+    cout<<"carta en la pila de descarte: "<<pilaDescarte->getSvalue()<<" "<<pilaDescarte->getSymbol()<<endl;
+
+    int cartaSelec;
+=======
     for (int i = 0; i < 52; i++) {
         int x = i % 13 + 1;
         string Svalue = (x == 1) ? "A" : (x == 11) ? "J" : (x == 12) ? "Q" : (x == 13) ? "K" : to_string(
@@ -203,10 +340,40 @@ int main() {
             Baraja->remove(Baraja->getValue(), Baraja->getSvalue(), Baraja->getSymbol());
         }
     }
+>>>>>>> 8b1c481c0f0192dc963e16e9e21ffe009f9673db
 
-    //Paso 3
+    cout<<"Seleccione una carta o presione 0 para sacar una carta de la baraja:"<<endl;
+    cin>>cartaSelec;
+    if(cartaSelec==0) {
+        array_jug[indiceJugador]->insert(Baraja->getValue(), Baraja->getSvalue(), Baraja->getSymbol());
+        Baraja->remove(Baraja->getValue(), Baraja->getSvalue(), Baraja->getSymbol());
+    } else {
+        array_jug[indiceJugador]->cFind(cartaSelec);
+    }
+    cout<<"Tu baraja"<<endl;
+    array_jug[indiceJugador]->print();
+    /*bool encontro = array_jug[indiceJugador]->comprobar(pilaDescarte->getLastValue(),pilaDescarte->getLastSymbol(),pilaDescarte);
+    cout<<"Encontro: "<<encontro<<endl;
+    if(!encontro)
+    {
+        array_jug[indiceJugador]->insert(Baraja->getValue(), Baraja->getSvalue(), Baraja->getSymbol());
+        Baraja->remove(Baraja->getValue(), Baraja->getSvalue(), Baraja->getSymbol());
+    }*/
 
+    cout<<"\n\nJugo el jugador con el indice: "<<indiceJugador<<endl
+            <<"Mano de cada jugador\n\n";
 
+    for (int i = 0; i < numJugadores; i++) {
+        cout << "jugador" << i << ": " << endl;
+        array_jug[i]->print();
+    }
+
+<<<<<<< HEAD
+    return 0;
+}
+
+=======
     delete Jugadores,Baraja;
     return 0;
 }
+>>>>>>> 8b1c481c0f0192dc963e16e9e21ffe009f9673db
