@@ -1,3 +1,0 @@
-C:/Users/Eduardo/Desktop/Estructura-de-datos/8 Locos/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/Eduardo/Desktop/Estructura-de-datos/8 Locos/cmake-build-debug/CMakeFiles/8_Locos.dir
-C:/Users/Eduardo/Desktop/Estructura-de-datos/8 Locos/cmake-build-debug/CMakeFiles/rebuild_cache.dir
